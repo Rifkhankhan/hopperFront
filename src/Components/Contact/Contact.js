@@ -1,6 +1,6 @@
 import React from 'react'
 import image2 from './../../images/3.jpg'
-
+import styles from './Contact.module.css'
 const Contact = ({ contactRef }) => {
 	return (
 		<section
@@ -10,24 +10,29 @@ const Contact = ({ contactRef }) => {
 			ref={contactRef}>
 			{/* style="background-image: url(assets/img/overlay-bg.jpg)"> */}
 			<div class="overlay-mf"></div>
-			<div class="container">
+			<div className={`container ${styles.container}`}>
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="contact-mf">
 							<div id="contact" class="box-shadow-full">
 								<div class="row">
 									<div class="card-img">
-										<h5 class="title-left">
-											<a href="">
-												<img src={image2} alt="" class="img-fluid" />
-											</a>
-										</h5>
+										<a href="">
+											<img
+												src={image2}
+												alt=""
+												class="img-fluid"
+												className={styles.image}
+											/>
+										</a>
 									</div>
 									<div class="col-md-6">
-										<div class="title-box-2 pt-4 pt-md-0">
-											<h4 class="title-center">Get in Touch</h4>
+										<div class="title-box-3 pt-4 pt-md-0">
+											<h4 class="title-center" className={styles.header}>
+												Get in Touch
+											</h4>
 										</div>
-										<div class="more-info">
+										<div class="more-info " style={{ textAlign: 'left' }}>
 											<p class="lead"></p>
 											<h4>LOOKING AN ADEQUATE SOLUTION FOR YOUR COMPANY? </h4>
 											<p></p>

@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import styles from './ContactForm.module.css'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { createForm } from './../Actions/CustomerAction'
 const ContactForm = () => {
 	const [formValid, setFormValid] = useState(true)
+	const notification = useSelector(state => state.customer.notification)
+	const [formSubmit, setFormSubmit] = useState(false)
 	const dispatch = useDispatch()
 	const [error, setHasError] = useState(false)
-	const [inputs, setInputs] = useState({
+	// Initial state for inputs
+	const initialInputsState = {
 		fname: { value: '', isValid: true },
 		lname: { value: '', isValid: true },
 		email: { value: '', isValid: true },
@@ -14,7 +17,10 @@ const ContactForm = () => {
 		message: { value: '', isValid: true },
 		company: { value: '', isValid: true },
 		whoAmI: { value: '', isValid: true }
-	})
+	}
+
+	// State for inputs
+	const [inputs, setInputs] = useState(initialInputsState)
 
 	useEffect(() => {
 		console.log(inputs)
@@ -39,6 +45,11 @@ const ContactForm = () => {
 				[inputType]: { value: enteredValue, isValid: true }
 			}
 		})
+	}
+	if (notification) {
+		setTimeout(function () {
+			window.location.reload()
+		}, 1000)
 	}
 	const submitHandler = () => {
 		const data = {
@@ -89,6 +100,8 @@ const ContactForm = () => {
 		}
 
 		dispatch(createForm(data))
+		setFormSubmit(true)
+		setInputs(initialInputsState)
 	}
 	return (
 		<div className={`container ${styles.container} `}>
@@ -100,6 +113,19 @@ const ContactForm = () => {
 					<p className={styles.errorMessage}>Invalid Data Please check!</p>
 				</div>
 			)}
+
+			{notification && (
+				<div className={styles.successContainer}>
+					<p className={styles.successMessage}>Successfully sent!</p>
+				</div>
+			)}
+
+			{!notification && !formSubmit && (
+				<div className={styles.successContainer}>
+					<i class="fas fa-spinner fa-spin"></i>
+				</div>
+			)}
+
 			<form class="form">
 				{/* forms row start */}
 
@@ -182,6 +208,7 @@ const ContactForm = () => {
 									type="radio"
 									id="option1"
 									name="whoAmI"
+									defaultChecked={true}
 									onChange={e => inputTextChangeHandler('whoAmI', 'owner')}
 									value={inputs.whoAmI.value}
 									class="col col-2"

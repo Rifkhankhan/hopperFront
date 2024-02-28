@@ -1,21 +1,23 @@
 import React from 'react'
 import image2 from './../../images/Picture18.jpg'
-
+import styles from './Projects.module.css'
 const Projects = ({ projectRef }) => {
 	return (
 		<section id="projects" class="blog-mf sect-pt4 route" ref={projectRef}>
-			<div class="container">
+			<div className={`container ${styles.container} `}>
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="title-box text-center">
-							<h3 class="title-a">Our Projects</h3>
+							<h3 class="title-a" style={{ color: 'white', fontSize: '7vh' }}>
+								Our Projects
+							</h3>
 							<p class="subtitle-a"></p>
 							<div class="line-mf"></div>
 						</div>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-4 mt-3">
 						<div class="card card-blog">
 							<div class="card-img">
 								<a href="">
@@ -39,7 +41,7 @@ const Projects = ({ projectRef }) => {
 							</div>
 						</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-4 mt-3">
 						<div class="card card-blog">
 							<div class="card-img">
 								<a href="">
@@ -61,7 +63,7 @@ const Projects = ({ projectRef }) => {
 							</div>
 						</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-4 mt-3">
 						<div class="card card-blog">
 							<div class="card-img">
 								<a href="">
@@ -86,7 +88,7 @@ const Projects = ({ projectRef }) => {
 						</div>
 					</div>
 
-					<div class="col-md-4">
+					<div class="col-md-4 mt-3">
 						<div class="card card-blog">
 							<div class="card-img">
 								<a href="">
@@ -111,7 +113,7 @@ const Projects = ({ projectRef }) => {
 						</div>
 					</div>
 
-					<div class="col-md-4">
+					<div class="col-md-4 mt-3">
 						<div class="card card-blog">
 							<div class="card-img">
 								<a href="">
@@ -134,7 +136,7 @@ const Projects = ({ projectRef }) => {
 						</div>
 					</div>
 
-					<div class="col-md-4">
+					<div class="col-md-4 my-3">
 						<div class="card card-blog">
 							<div class="card-img">
 								<a href="blog-single.html">

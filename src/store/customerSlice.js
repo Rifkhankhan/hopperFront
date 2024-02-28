@@ -3,11 +3,17 @@ import { createSlice } from '@reduxjs/toolkit'
 export const customerSlice = createSlice({
 	name: 'customer',
 	initialState: {
-		form: null
+		form: null,
+		notification: false
 	},
 	reducers: {
 		createForm: (state, action) => {
 			console.log(action.payload)
+		},
+
+		getNotification: (state, action) => {
+			console.log(action.payload)
+			if (action.payload.success) state.notification = true
 		}
 	}
 })

@@ -19,11 +19,20 @@ import ContactForm from './Components/Form/ContactForm'
 import Projects from './Components/Projects/Projects'
 import Contact from './Components/Contact/Contact'
 import store from './store/index'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
 function App() {
 	const [scrolled, setScrolled] = useState(false)
 	const [currentScreen, setCurrentScreen] = useState('Home')
 
 	const [activeHeader, setActiveHeader] = useState(null)
+
+	const handleClick = () => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth' // Optional: Adds smooth scrolling behavior
+		})
+	}
 
 	const headerRefs = {
 		Home: useRef(null),
@@ -112,6 +121,10 @@ function App() {
 				{/* contacts */}
 				<Contact contactRef={headerRefs.Contact} />
 				<ContactForm />
+
+				<button className={styles.scrollToTopBtn} onClick={handleClick}>
+					<FontAwesomeIcon icon={faArrowUp} /> {/* Render the arrow-up icon */}
+				</button>
 			</Provider>
 		</div>
 	)
