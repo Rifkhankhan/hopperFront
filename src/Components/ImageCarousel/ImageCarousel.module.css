@@ -1,0 +1,59 @@
+.carousel{
+	width: 95%;
+	height: 80vh;
+	margin:auto !important;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.imagesContainer{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	justify-content: space-between;
+	
+}
+
+.imagesContainer{
+	color: white;
+	font-size: 20px;
+}
+
+.imagesCon img {
+	height: 50vh;
+	width: 40vh;
+	margin: 10px;
+	border-radius: 5px;
+}
+
+.btns{
+	width: 50%;
+	display: flex;
+	justify-content: space-around;
+	margin: auto;
+}
+.btn{
+	margin-block: 20px;
+	border-radius: 5px;
+	width: 20%;
+	border: none;
+	padding: 10px;
+	font-size: 20px;
+	font-weight: 600	;
+
+}
+
+.btn:hover{
+	cursor: pointer;
+
+}
+.btn:first-child{
+	background-color: red;
+
+}
+
+.btn:last-child{
+	background-color: yellow;
+
+}

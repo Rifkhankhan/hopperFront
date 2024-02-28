@@ -1,0 +1,65 @@
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+}
+
+/** 
+  Breakpoints:
+  ------------
+  sm: min-width: 640px; //small device
+  md: min-width: 768px; // medium device
+  lg: min-width: 1024px; // large device
+  xl: min-width: 1280px; // extra large device
+  2xl: min-width: 1536px; // 2 x extra large device
+**/
+.container{
+    background: url('./../../images/Picture1.png');
+    background-blend-mode: darken;
+    background-position: center;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    flex-direction: column; 
+    align-items: center;
+    min-height: 70vh;
+    margin-top: 5vh;
+
+}
+
+.heading{
+    font-size: 40px;
+    font-weight: 600;
+    text-align: center;
+    color: white;
+}
+
+.carouselContainer{
+
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.merqueImage {
+    width: 70vh;
+    min-width: 40vh; /* Adjust width as needed */
+    height: 70vh;
+    margin-right: 10px; /* Adjust spacing between images */
+    border-radius: 5px;
+    box-shadow: 1px white;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .merqueImage {
+        width: 40vh;
+        min-width: 40vh; /* Adjust width as needed */
+    height: 40vh;
+       
+      }
+    
+}
