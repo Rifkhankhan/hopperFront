@@ -21,6 +21,7 @@ import Contact from './Components/Contact/Contact'
 import store from './store/index'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
+import Footer from './Components/Footer/Footer'
 function App() {
 	const [scrolled, setScrolled] = useState(false)
 	const [currentScreen, setCurrentScreen] = useState('Home')
@@ -125,6 +126,8 @@ function App() {
 				<button className={styles.scrollToTopBtn} onClick={handleClick}>
 					<FontAwesomeIcon icon={faArrowUp} /> {/* Render the arrow-up icon */}
 				</button>
+
+				<Footer />
 			</Provider>
 		</div>
 	)

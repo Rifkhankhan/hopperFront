@@ -194,6 +194,7 @@ const ContactForm = () => {
 								id="inputFirstName"
 								placeholder="Enter Message"
 								value={inputs.message.value}
+								rows={5}
 								onChange={e =>
 									inputTextChangeHandler('message', e.target.value)
 								}
@@ -201,7 +202,7 @@ const ContactForm = () => {
 						</div>
 					</div>
 
-					<div class="col-md-5 col-sm-6 my-3">
+					<div class="col-md-6 col-sm-6 my-3">
 						<div class="form-group">
 							<div class="row mb-1">
 								<input
