@@ -22,6 +22,11 @@ import store from './store/index'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
 import Footer from './Components/Footer/Footer'
+
+import { BrowserRouter } from 'react-router-dom'
+import Routers from './Router/Routers'
+import ImageCarousel from './Components/ImageCarousel/ImageCarousel'
+
 function App() {
 	const [scrolled, setScrolled] = useState(false)
 	const [currentScreen, setCurrentScreen] = useState('Home')
@@ -97,37 +102,41 @@ function App() {
 	return (
 		<div className="App">
 			<Provider store={store}>
-				<Header
-					refs={[
-						headerRefs.Home,
-						headerRefs.About,
-						headerRefs.Projects,
-						headerRefs.Services,
-						headerRefs.Contact
-					]}
-				/>
+				<BrowserRouter>
+					<Header
+						refs={[
+							headerRefs.Home,
+							headerRefs.About,
+							headerRefs.Projects,
+							headerRefs.Services,
+							headerRefs.Contact
+						]}
+					/>
 
-				<Home homeRef={headerRefs.Home} />
-				{/* <Products /> */}
-				<Products />
+					<Home homeRef={headerRefs.Home} />
+					{/* <Products /> */}
+					<Products />
+					{/* <ImageCarousel /> */}
+					{/* about us */}
+					<About aboutRef={headerRefs.About} />
 
-				{/* about us */}
-				<About aboutRef={headerRefs.About} />
+					{/* our products */}
+					<Service servicesRef={headerRefs.Services} />
+					{/* projects */}
+					<Projects projectRef={headerRefs.Projects} />
 
-				{/* our products */}
-				<Service servicesRef={headerRefs.Services} />
-				{/* projects */}
-				<Projects projectRef={headerRefs.Projects} />
+					{/* contacts */}
+					<Contact contactRef={headerRefs.Contact} />
+					<ContactForm />
 
-				{/* contacts */}
-				<Contact contactRef={headerRefs.Contact} />
-				<ContactForm />
+					<button className={styles.scrollToTopBtn} onClick={handleClick}>
+						<FontAwesomeIcon icon={faArrowUp} />{' '}
+						{/* Render the arrow-up icon */}
+					</button>
 
-				<button className={styles.scrollToTopBtn} onClick={handleClick}>
-					<FontAwesomeIcon icon={faArrowUp} /> {/* Render the arrow-up icon */}
-				</button>
-
-				<Footer />
+					<Footer />
+					<Routers />
+				</BrowserRouter>
 			</Provider>
 		</div>
 	)

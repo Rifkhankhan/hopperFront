@@ -12,7 +12,7 @@ const Service = ({ servicesRef }) => {
 				<div className="row">
 					<div className="col-sm-12">
 						<div className="title-box text-center">
-							<h3 className="title-a" style={{ fontSize: '7vh' }}>
+							<h3 class="title-a" className={styles.header}>
 								Our Services
 							</h3>
 							<p className="subtitle-a">

@@ -1,14 +1,23 @@
 import React from 'react'
-import image2 from './../../images/Picture18.jpg'
+import image2 from './../../images/ser-p-img2.png'
+import image from './../../images/ser-p-img1.png'
+import image1 from './../../images/Picture4.jpg'
+import image3 from './../../images/Picture6.png'
+import image4 from './../../images/Picture7.jpg'
 import styles from './Projects.module.css'
 const Projects = ({ projectRef }) => {
 	return (
-		<section id="projects" class="blog-mf sect-pt4 route" ref={projectRef}>
-			<div className={`container ${styles.container} `}>
+		<section
+			id="projects"
+			class=" blog-mf sect-pt4 route"
+			ref={projectRef}
+			style={{ color: 'white', marginTop: '5vh' }}
+			className={styles.container}>
+			<div class="container">
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="title-box text-center">
-							<h3 class="title-a" style={{ color: 'white', fontSize: '7vh' }}>
+							<h3 class="title-a" className={styles.header}>
 								Our Projects
 							</h3>
 							<p class="subtitle-a"></p>
@@ -45,7 +54,7 @@ const Projects = ({ projectRef }) => {
 						<div class="card card-blog">
 							<div class="card-img">
 								<a href="">
-									<img src={image2} alt="" class="img-fluid" />
+									<img src={image} alt="" class="img-fluid" />
 								</a>
 							</div>
 							<div class="card-body">
@@ -67,7 +76,7 @@ const Projects = ({ projectRef }) => {
 						<div class="card card-blog">
 							<div class="card-img">
 								<a href="">
-									<img src={image2} alt="" class="img-fluid" />
+									<img src={image1} alt="" class="img-fluid" />
 								</a>
 							</div>
 							<div class="card-body">
@@ -92,7 +101,7 @@ const Projects = ({ projectRef }) => {
 						<div class="card card-blog">
 							<div class="card-img">
 								<a href="">
-									<img src={image2} alt="" class="img-fluid" />
+									<img src={image3} alt="" class="img-fluid" />
 								</a>
 							</div>
 							<div class="card-body">
@@ -117,7 +126,7 @@ const Projects = ({ projectRef }) => {
 						<div class="card card-blog">
 							<div class="card-img">
 								<a href="">
-									<img src={image2} alt="" class="img-fluid" />
+									<img src={image3} alt="" class="img-fluid" />
 								</a>
 							</div>
 							<div class="card-body">
@@ -140,7 +149,7 @@ const Projects = ({ projectRef }) => {
 						<div class="card card-blog">
 							<div class="card-img">
 								<a href="blog-single.html">
-									<img src={image2} alt="" class="img-fluid" />
+									<img src={image4} alt="" class="img-fluid" />
 								</a>
 							</div>
 							<div class="card-body">

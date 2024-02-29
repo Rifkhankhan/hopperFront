@@ -25,6 +25,18 @@ backdrop-filter: blur( 0px );
 border-radius: 10px;
 border: 1px solid rgba( 255, 255, 255, 0.18 );
 padding: 1vh;
+padding-top: 15vh;
+color: white;
+}
+
+@media screen and (max-width:600px) {
+    .container{
+        width: 95%;
+        padding-top: 10vh;
+        margin-inline: auto;
+    
+    }
+    
 }
 .heading{
     font-size: 50px;

@@ -9,7 +9,6 @@ const About = ({ aboutRef }) => {
 		<section
 			id="about"
 			class="about-mf sect-pt4 route"
-			style={{ color: 'white', marginTop: '5vh' }}
 			className={styles.container}
 			ref={aboutRef}>
 			<div class="container">

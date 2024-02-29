@@ -55,6 +55,14 @@
     text-transform: capitalize;
     font-size: 60px;
 }
+
+@media screen and (max-width:600px) {
+    .imagesContainer h1{
+       
+        font-size: 40px;
+        padding-inline: 2vh;
+    }
+}
 .backImage{
     width: 150px;
     height: 400px;

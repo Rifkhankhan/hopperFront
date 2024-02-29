@@ -1,72 +1,88 @@
-import React, { useState } from 'react'
-import { Carousel } from 'react-responsive-carousel'
-import 'react-responsive-carousel/lib/styles/carousel.min.css' // Import the carousel styles
-import image from './../../images/Picture9.jpg'
-import image1 from './../../images/Picture10.jpg'
-import image2 from './../../images/Picture11.jpg'
-import image3 from './../../images/Picture12.jpg'
-import image4 from './../../images/Picture13.jpg'
-import image5 from './../../images/Picture14.jpg'
-import image6 from './../../images/Picture15.png'
-import image7 from './../../images/Picture16.jpg'
-import image8 from './../../images/Picture17.jpg'
-import image9 from './../../images/Picture18.jpg'
-import image10 from './../../images/Picture19.jpg'
-import image11 from './../../images/Picture20.jpg'
-
+import React, { useEffect, useState } from 'react'
 import styles from './ImageCarousel.module.css'
+import image from './../../images/Picture5.png'
+import image1 from './../../images/Picture6.gif'
+import image2 from './../../images/Picture7.gif'
+import image3 from './../../images/Picture8.gif'
+import image9 from './../../images/Picture9.jpg'
+import image10 from './../../images/Picture10.jpg'
+import image11 from './../../images/Picture11.jpg'
+import image12 from './../../images/Picture12.jpg'
+import image13 from './../../images/Picture13.jpg'
+import image14 from './../../images/Picture14.jpg'
+import image15 from './../../images/Picture15.png'
+import image16 from './../../images/Picture16.jpg'
+import image17 from './../../images/Picture17.jpg'
 
 const ImageCarousel = () => {
 	const [currentIndex, setCurrentIndex] = useState(0)
-	const images = [
-		[image, image1],
-		[image2, image3],
-		[image4, image5],
-		[image6, image7],
-		[image8, image9],
-		[image10, image11]
-	]
 
-	const titles = [
-		'Hotel Rooms',
-		'Military Office',
-		'Police Dog Kennels',
-		'Mobile Studio Shelter'
-	]
-
-	const handlePrevious = () => {
-		if (currentIndex === 0) {
-			setCurrentIndex(images.length - 1)
-		} else {
-			setCurrentIndex(currentIndex - 1)
-		}
+	const goToPreviousSlide = () => {
+		const newIndex = currentIndex === 0 ? items.length - 1 : currentIndex - 1
+		setCurrentIndex(newIndex)
 	}
 
-	const handleNext = () => {
-		if (currentIndex === images.length - 1) {
-			setCurrentIndex(0)
-		} else {
-			setCurrentIndex(currentIndex + 1)
-		}
+	const goToNextSlide = () => {
+		const newIndex = currentIndex === items.length - 1 ? 0 : currentIndex + 1
+		setCurrentIndex(newIndex)
 	}
+
+	const items = [
+		{
+			image,
+			image1
+		},
+		{
+			image2,
+			image3
+		}
+	]
 
 	return (
-		<div className={styles.carousel}>
-			<div className={styles.imagesContainer}>
-				<div className={styles.imagesCon}>
-					<img src={images[currentIndex][0]} alt="" className={styles.image} />
-					<img src={images[currentIndex][1]} alt="" className={styles.image} />
-				</div>
-				<h2>{titles[currentIndex]}</h2>
-			</div>
+		<div className={styles.container}>
+			<div className={styles.heading}>Products</div>
+			<div className="container">
+				<div
+					class="row"
+					style={{
+						margin: '1vh',
+						display: 'flex',
+						justifyContent: 'space-around'
+					}}>
+					<div
+						class={`col col-md-5 col-sm-5 hover-effect ${styles.box}`}
+						style={{
+							border: '1px solid rgba(209, 213, 219, 0.3)',
+							backdropFilter: ' blur(3px) saturate(200%)',
+							backDropFilter: 'blur(3px) saturate(200%)',
+							backgroundColor: 'rgba(197, 37, 237, 0.23)',
+							borderRadius: '12px',
+							height: '30vh',
+							display: 'flex',
+							justifyContent: 'center',
+							alignItems: 'center',
+							marginBlock: '1vh'
+						}}>
+						<img src={image} />
+					</div>
 
-			<div className={styles.btns}>
-				<button onClick={handlePrevious} className={styles.btn}>
-					Previous
-				</button>
-				<button onClick={handleNext} className={styles.btn}>
-					Next
-				</button>
+					<div
+						class={`col col-md-5 col-sm-5 hover-effect ${styles.box}`}
+						style={{
+							border: '1px solid rgba(209, 213, 219, 0.3)',
+							backdropFilter: ' blur(3px) saturate(200%)',
+							backDropFilter: 'blur(3px) saturate(200%)',
+							backgroundColor: 'rgba(197, 37, 237, 0.23)',
+							borderRadius: '12px',
+							height: '30vh',
+							display: 'flex',
+							justifyContent: 'center',
+							alignItems: 'center',
+							marginTop: '1vh'
+						}}>
+						<img src={image1} />
+					</div>
+				</div>
 			</div>
 		</div>
 	)

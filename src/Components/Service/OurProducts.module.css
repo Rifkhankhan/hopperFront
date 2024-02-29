@@ -7,8 +7,23 @@
 width: 95%;
 margin: auto;
 margin-block: 5vh;
+padding-top: 12vh;
 }
+.header{
+    font-size: 7vh;
+}
+@media screen and (max-width:600px) {
+    .container{
+        padding-top: 10vh;
+        margin-inline: auto;
+    
+    }
 
+    .header{
+        font-size: 5vh;
+    }
+    
+}
 .card{
     background: rgba( 250, 242, 242, 0.4 );
 box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );

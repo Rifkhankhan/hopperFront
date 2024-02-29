@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import styles from './TypingEffect.module.css'
 
 const TypingEffect = () => {
 	const [sentence, setSentence] = useState('')
 	const [showCursor, setShowCursor] = useState(true)
 	const mainSentence = 'Create >> Design >> Construct >> Manage'
 	const typingSpeed = 100 // Adjust typing speed as needed
-	const delayBetweenLoops = 2000 // Adjust delay between loops as needed
+	const delayBetweenLoops = 1000 // Adjust delay between loops as needed
 
 	useEffect(() => {
 		const loop = () => {
@@ -26,7 +27,7 @@ const TypingEffect = () => {
 			// Toggle cursor every 500ms
 			const cursorInterval = setInterval(() => {
 				setShowCursor(prevState => !prevState)
-			}, 500)
+			}, 2500)
 
 			// Cleanup function to clear intervals
 			return () => {
@@ -43,7 +44,7 @@ const TypingEffect = () => {
 
 	return (
 		<div>
-			<h2 style={{ color: 'white', fontSize: '40px' }}>
+			<h2 className={styles.message}>
 				{sentence}
 				{showCursor && '|'}
 			</h2>

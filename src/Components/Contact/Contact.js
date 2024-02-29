@@ -1,16 +1,17 @@
 import React from 'react'
-import image2 from './../../images/3.jpg'
+import image2 from './../../images/ContactUs.png'
 import styles from './Contact.module.css'
 const Contact = ({ contactRef }) => {
 	return (
 		<section
 			id="contact"
 			class="paralax-mf footer-paralax bg-image sect-mt4 route"
-			style={{ color: 'white' }}
-			ref={contactRef}>
+			ref={contactRef}
+			style={{ color: 'white', marginTop: '5vh' }}
+			className={styles.container}>
 			{/* style="background-image: url(assets/img/overlay-bg.jpg)"> */}
 			<div class="overlay-mf"></div>
-			<div className={`container ${styles.container}`}>
+			<div className="container">
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="contact-mf">
@@ -53,7 +54,7 @@ const Contact = ({ contactRef }) => {
 												</li>
 											</ul>
 										</div>
-										<div class="socials">
+										{/* <div class="socials">
 											<ul>
 												<li>
 													<a href="">
@@ -70,7 +71,7 @@ const Contact = ({ contactRef }) => {
 													</a>
 												</li>
 											</ul>
-										</div>
+										</div> */}
 									</div>
 								</div>
 							</div>
