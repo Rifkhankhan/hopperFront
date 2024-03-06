@@ -104,6 +104,7 @@ const ContactForm = () => {
 			Hi Im ${data.fname} ${data?.lname} %0D%0A
 			phone : ${data?.phone} %0D%0A
 			company : ${data?.company} %0D%0A  
+			email : ${data?.email} %0D%0A  
 			
 			message:${data?.message}`
 		
