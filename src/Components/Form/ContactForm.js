@@ -102,7 +102,14 @@ const ContactForm = () => {
 		
 		var subject = "Customer Information Request";
 		var email = "rifkhanmuhammed17@gmail.com";
-		var body = encodeURIComponent(data); // encode the data for the mailto link
+ // encode the data for the mailto link
+		const body =`<div>
+			Hi Im ${data.fname} ${data?.lname} %0D%0A
+			phone : ${data?.phone} %0D%0A
+			company : ${data?.company} %0D%0A
+			
+			message:${data?.message}`
+		
 	
 		// Construct the mailto link with subject and body
 		var mailtoLink = "mailto:" + email + "?subject=" + encodeURIComponent(subject) + "&body=" + body;
