@@ -98,7 +98,7 @@ const ContactForm = () => {
 
 		
 		var subject = "Customer Information Request";
-		var email = "hhopper282@gmail.com";
+		var email = "info@hopper-eng.com";
  // encode the data for the mailto link
 		const body =`<div>
 			Hi Im ${data.fname} ${data?.lname} %0D%0A
