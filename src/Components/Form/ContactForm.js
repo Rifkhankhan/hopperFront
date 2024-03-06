@@ -94,10 +94,7 @@ const ContactForm = () => {
 			return
 		}
 
-		// emailjs.sendForm('service_ecnxg7f', 'template_c9stz5k',e.target, 'HTCtiq7F1bnT0LaFL')
-        
-		// dispatch(createForm(data))
-		// setFormSubmit(true)
+		
 
 		
 		var subject = "Customer Information Request";
@@ -106,7 +103,7 @@ const ContactForm = () => {
 		const body =`<div>
 			Hi Im ${data.fname} ${data?.lname} %0D%0A
 			phone : ${data?.phone} %0D%0A
-			company : ${data?.company} %0D%0A
+			company : ${data?.company} %0D%0A  
 			
 			message:${data?.message}`
 		
