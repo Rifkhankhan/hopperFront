@@ -1,0 +1,97 @@
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+}
+
+/** 
+  Breakpoints:
+  ------------
+  sm: min-width: 640px; //small device
+  md: min-width: 768px; // medium device
+  lg: min-width: 1024px; // large device
+  xl: min-width: 1280px; // extra large device
+  2xl: min-width: 1536px; // 2 x extra large device
+**/
+
+.container{
+    width: 95%;
+
+margin-inline: auto;
+
+background: rgba( 25, 1, 1, 0.15 );
+backdrop-filter: blur( 0px );
+-webkit-backdrop-filter: blur( 0px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+padding: 1vh;
+padding-top: 15vh;
+color: white;
+}
+
+@media screen and (max-width:600px) {
+    .container{
+        width: 95%;
+        padding-top: 10vh;
+        margin-inline: auto;
+    
+    }
+    
+}
+.heading{
+    font-size: 50px;
+    font-weight: 600;
+    text-align: center;
+    color: white;
+    margin-block: 10px;
+}
+
+.paraContainer{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    color: white;
+    margin: auto;
+}
+
+.para{
+    color: white;
+    margin-bottom: 10px;
+    text-align: left;
+}
+.subHeadings{
+    margin: auto;
+    margin-top: 20px;
+}
+.subHeaderCon{
+    width: 90%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.subHeader{
+    text-align: left;
+    color: yellow;
+    font-weight: 600;
+}
+
+.subHeaderCon p{
+   color: white;
+   text-align: left;
+   padding-block: 10px;
+}
+
+.aboutHead{
+    text-align: left;
+    font-size: 35px;
+    text-decoration: underline;
+    text-transform: capitalize;
+    font-family: 'Times New Roman', Times, serif;
+    text-decoration-color: blueviolet;
+    padding-bottom: 10px;
+   
+}
+
+.aboutSubHead {
+    text-align: left !important;
+}

@@ -1,0 +1,20 @@
+.container {
+    position: fixed;
+    margin-top: 5vh;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height:80%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.681);
+    background-blend-mode: darken;
+    border-radius: 1vh;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100%; /* Adjust width for smaller screens */
+    }
+}

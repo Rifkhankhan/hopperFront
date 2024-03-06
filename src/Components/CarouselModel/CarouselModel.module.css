@@ -1,0 +1,123 @@
+/* carousel */
+
+.carousel {
+	width: 100%;
+	flex: 1;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	flex-direction: row;
+	transition: transform 0.5s ease;
+	justify-content: center;
+
+	align-items: center;
+}
+
+.slides {
+	display: flex;
+}
+
+.slide {
+	/* min-width: 100%; */
+	display: none;
+}
+
+.slide_active {
+	opacity: 1;
+	width: 100% !important;
+	height: 50vh;
+}
+
+.prev,
+.next {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: transparent;
+	border: none;
+	padding: 10px 20px;
+	cursor: pointer;
+	font-size: 50px;
+	color: white;
+}
+
+.close {
+	position: absolute;
+	top: 5%;
+	right: 0%;
+	background-color: transparent;
+	border: none;
+	padding: 10px 10px;
+	cursor: pointer;
+	font-size: 30px;
+	color: white;
+}
+@media screen and (max-width: 600px) {
+	.close {
+		top: 1%;
+		right: 0%;
+		padding: 1px 1px;
+		cursor: pointer;
+		font-size: 20px;
+		color: white;
+	}
+	.prev,
+	.next {
+		padding: 1px 1px;
+		cursor: pointer;
+		font-size: 30px;
+		color: white;
+	}
+
+	.prev {
+		left: 1px;
+	}
+
+	.next {
+		right: 1px;
+	}
+	.close {
+		right: 1px;
+	}
+}
+.close {
+	right: 10px;
+}
+.prev {
+	left: 10px;
+}
+
+.next {
+	right: 10px;
+}
+
+@media screen and (max-width: 600px) {
+	.container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: 50vh;
+		margin-block: 2vh;
+	}
+	.carousel {
+		height: 100vh;
+		min-height: 50vh !important;
+	}
+	.slide_active {
+		min-height: 80vh;
+		flex: 1;
+		height: 100%;
+	}
+}
+@media screen and (max-width: 600px) {
+	.imageEditBtn {
+		font-size: 1.5em;
+	}
+}
+.editBtn {
+	font-size: 1.5em;
+}
+
+.editBtn:hover {
+	cursor: pointer;
+}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styles from './ContactForm.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { createForm } from './../Actions/CustomerAction'
+import emailjs from 'emailjs-com';
 const ContactForm = () => {
 	const [formValid, setFormValid] = useState(true)
 	const notification = useSelector(state => state.customer.notification)
@@ -16,21 +17,18 @@ const ContactForm = () => {
 		phone: { value: '', isValid: true },
 		message: { value: '', isValid: true },
 		company: { value: '', isValid: true },
-		whoAmI: { value: '', isValid: true }
 	}
 
 	// State for inputs
 	const [inputs, setInputs] = useState(initialInputsState)
 
 	useEffect(() => {
-		console.log(inputs)
 		setFormValid(
 			inputs.fname.isValid &&
 				inputs.lname.isValid &&
 				inputs.email.isValid &&
 				inputs.phone.isValid &&
 				inputs.company.isValid &&
-				inputs.whoAmI.isValid &&
 				inputs.message.isValid
 		)
 
@@ -38,7 +36,6 @@ const ContactForm = () => {
 	}, [inputs])
 
 	const inputTextChangeHandler = (inputType, enteredValue) => {
-		console.log(enteredValue)
 		setInputs(currentInputValue => {
 			return {
 				...currentInputValue,
@@ -46,46 +43,44 @@ const ContactForm = () => {
 			}
 		})
 	}
-	if (notification) {
-		setTimeout(function () {
-			window.location.reload()
-		}, 1000)
-	}
-	const submitHandler = () => {
+	// if (notification) {
+	// 	setTimeout(function () {
+	// 		window.location.reload()
+	// 	}, 1000)
+	// }
+	const submitHandler = (e) => {
+		e.preventDefault();
+
+
 		const data = {
 			fname: inputs.fname.value,
 			lname: inputs.lname.value,
 			email: inputs.email.value,
 			company: inputs.company.value,
 			phone: inputs.phone.value,
-			whoAmI: inputs.whoAmI.value,
-			message: inputs.message.value
+			message: inputs.message.value,
 		}
 
 		const fnameValid = data.fname?.trim().length > 0
-		const whoAmIValid = data.whoAmI?.trim().length > 0
 		const messageValid = data.message?.trim().length > 0
 		const lnameValid = data.lname?.trim().length > 0
 		const companyValid = data.company?.trim().length > 0
 		const emailValid =
 			data.email?.trim().length > 0 && data.email?.trim().includes('@')
 		const phoneValid =
-			data.phone.toString().trim().length > 9 &&
-			data.phone.toString().trim().length <= 10
-
+			data.phone.toString().trim().length > 9 
 		if (
 			!fnameValid ||
 			!lnameValid ||
 			!emailValid ||
 			!phoneValid ||
-			!whoAmIValid ||
 			!messageValid ||
 			!companyValid
 		) {
+
 			setInputs(currentInputs => {
 				return {
 					fname: { value: currentInputs.fname.value, isValid: fnameValid },
-					whoAmI: { value: currentInputs.whoAmI.value, isValid: whoAmIValid },
 					lname: { value: currentInputs.lname.value, isValid: lnameValid },
 					email: { value: currentInputs.email.value, isValid: emailValid },
 					company: {
@@ -99,8 +94,23 @@ const ContactForm = () => {
 			return
 		}
 
-		dispatch(createForm(data))
-		setFormSubmit(true)
+		// emailjs.sendForm('service_ecnxg7f', 'template_c9stz5k',e.target, 'HTCtiq7F1bnT0LaFL')
+        
+		// dispatch(createForm(data))
+		// setFormSubmit(true)
+
+		
+		var subject = "Customer Information Request";
+		var email = "rifkhanmuhammed17@gmail.com";
+		var body = encodeURIComponent(data); // encode the data for the mailto link
+	
+		// Construct the mailto link with subject and body
+		var mailtoLink = "mailto:" + email + "?subject=" + encodeURIComponent(subject) + "&body=" + body;
+	
+		// Open the default email client with the mailto link
+		window.location.href = mailtoLink;
+	
+
 		setInputs(initialInputsState)
 	}
 	return (
@@ -126,7 +136,7 @@ const ContactForm = () => {
 				</div>
 			)}
 
-			<form class="form">
+			<form class="form" id='form' onSubmit={submitHandler}>
 				{/* forms row start */}
 
 				<div class="form-row row">
@@ -134,6 +144,7 @@ const ContactForm = () => {
 						<div class="form-group">
 							<input
 								type="email"
+								name='email'
 								class="form-control"
 								id="inputFirstName"
 								placeholder="Enter email"
@@ -148,6 +159,7 @@ const ContactForm = () => {
 						<input
 							type="First Name"
 							class="col-sm-6 col-md-6 form-control"
+							name='fname'
 							placeholder="First Name"
 							value={inputs.fname.value}
 							onChange={e => inputTextChangeHandler('fname', e.target.value)}
@@ -156,6 +168,8 @@ const ContactForm = () => {
 					<div class="col-md-6 col-sm-6  my-3">
 						<input
 							type="Last Name"
+							name='lname'
+
 							class="col-sm-6 col-md-6 form-control"
 							placeholder="Last Name"
 							value={inputs.lname.value}
@@ -168,6 +182,8 @@ const ContactForm = () => {
 					<div class="col-md-6 col-sm-6  my-3">
 						<input
 							type="Company"
+							name='company'
+
 							class="col-sm-6 col-md-6 form-control"
 							placeholder="Company"
 							value={inputs.company.value}
@@ -179,6 +195,8 @@ const ContactForm = () => {
 							type="Last Name"
 							class="col-sm-6 col-md-6 form-control"
 							placeholder="Phone"
+							name='phone'
+
 							value={inputs.phone.value}
 							onChange={e => inputTextChangeHandler('phone', e.target.value)}
 						/>
@@ -192,6 +210,8 @@ const ContactForm = () => {
 								type="message"
 								class="form-control"
 								id="inputFirstName"
+							name='message'
+
 								placeholder="Enter Message"
 								value={inputs.message.value}
 								rows={5}
@@ -202,102 +222,13 @@ const ContactForm = () => {
 						</div>
 					</div>
 
-					<div class="col-md-6 col-sm-6 my-3">
-						<div class="form-group">
-							<div class="row mb-1">
-								<input
-									type="radio"
-									id="option1"
-									name="whoAmI"
-									defaultChecked={true}
-									onChange={e => inputTextChangeHandler('whoAmI', 'owner')}
-									value={inputs.whoAmI.value}
-									class="col col-2"
-								/>
-								<label
-									for="option1"
-									class="col col-1"
-									style={{ color: 'white', fontSize: '2vh' }}>
-									Owner
-								</label>
-							</div>
-
-							<div class="row mb-1">
-								<input
-									type="radio"
-									id="option1"
-									name="whoAmI"
-									onChange={e => inputTextChangeHandler('whoAmI', 'president')}
-									value={inputs.whoAmI.value}
-									class="col col-2"
-								/>
-								<label
-									for="option1"
-									class="col col-1"
-									style={{ color: 'white', fontSize: '2vh' }}>
-									President
-								</label>
-							</div>
-							<div class="row mb-1">
-								<input
-									type="radio"
-									id="option1"
-									name="whoAmI"
-									onChange={e =>
-										inputTextChangeHandler('whoAmI', 'viceprecident')
-									}
-									value={inputs.whoAmI.value}
-									class="col col-2"
-								/>
-								<label
-									for="option1"
-									class="col col-md-4 col-sm-1"
-									style={{ color: 'white', fontSize: '2vh' }}>
-									Vice President
-								</label>
-							</div>
-							<div class="row mb-1">
-								<input
-									type="radio"
-									id="option1"
-									name="whoAmI"
-									onChange={e => inputTextChangeHandler('whoAmI', 'manager')}
-									value={inputs.whoAmI.value}
-									class="col col-2"
-								/>
-								<label
-									for="option1"
-									class="col col-1"
-									style={{ color: 'white', fontSize: '2vh' }}>
-									Manager
-								</label>
-							</div>
-
-							<div class="row mb-1">
-								<input
-									type="radio"
-									id="option1"
-									name="whoAmI"
-									onChange={e => inputTextChangeHandler('whoAmI', 'marketing')}
-									value={inputs.whoAmI.value}
-									class="col col-2"
-								/>
-								<label
-									for="option1"
-									class="col col-1"
-									style={{ color: 'white', fontSize: '2vh' }}>
-									Marketing
-								</label>
-							</div>
-						</div>
-					</div>
 
 					<div class="col-md-1 col-sm-6 my-3">
 						<div class="form-group">
 							<button
-								type="button"
+								type="submit"
 								class="btn btn-primary"
-								onClick={submitHandler}>
+								>
 								Submit
 							</button>
 						</div>
