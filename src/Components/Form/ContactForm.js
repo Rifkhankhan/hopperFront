@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styles from './ContactForm.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { createForm } from './../Actions/CustomerAction'
-import emailjs from 'emailjs-com';
+import emailjs from 'emailjs-com'
 const ContactForm = () => {
 	const [formValid, setFormValid] = useState(true)
 	const notification = useSelector(state => state.customer.notification)
@@ -16,8 +16,24 @@ const ContactForm = () => {
 		email: { value: '', isValid: true },
 		phone: { value: '', isValid: true },
 		message: { value: '', isValid: true },
-		company: { value: '', isValid: true },
+		product: { value: '', isValid: true },
+		company: { value: '', isValid: true }
 	}
+
+	const products = [
+		'Mobile hotel cube',
+		'Mobile policeor military cube',
+		'medical cube',
+		'office cube',
+		'magnetic generator',
+		'soler power',
+		'zero water generator',
+		'zero farm',
+		'mobile nuclear shelter',
+		'earthquake resistant shelter',
+		'bomb(blast) shelter',
+		'flood shelter'
+	]
 
 	// State for inputs
 	const [inputs, setInputs] = useState(initialInputsState)
@@ -29,6 +45,7 @@ const ContactForm = () => {
 				inputs.email.isValid &&
 				inputs.phone.isValid &&
 				inputs.company.isValid &&
+				inputs.product.isValid &&
 				inputs.message.isValid
 		)
 
@@ -48,40 +65,44 @@ const ContactForm = () => {
 	// 		window.location.reload()
 	// 	}, 1000)
 	// }
-	const submitHandler = (e) => {
-		e.preventDefault();
-
+	const submitHandler = e => {
+		e.preventDefault()
 
 		const data = {
 			fname: inputs.fname.value,
 			lname: inputs.lname.value,
 			email: inputs.email.value,
 			company: inputs.company.value,
+			product: inputs.product.value,
 			phone: inputs.phone.value,
-			message: inputs.message.value,
+			message: inputs.message.value
 		}
 
 		const fnameValid = data.fname?.trim().length > 0
 		const messageValid = data.message?.trim().length > 0
 		const lnameValid = data.lname?.trim().length > 0
+		const productValid = data.product?.trim().length > 0
 		const companyValid = data.company?.trim().length > 0
 		const emailValid =
 			data.email?.trim().length > 0 && data.email?.trim().includes('@')
-		const phoneValid =
-			data.phone.toString().trim().length > 9 
+		const phoneValid = data.phone.toString().trim().length > 9
 		if (
 			!fnameValid ||
 			!lnameValid ||
 			!emailValid ||
+			!productValid ||
 			!phoneValid ||
 			!messageValid ||
 			!companyValid
 		) {
-
 			setInputs(currentInputs => {
 				return {
 					fname: { value: currentInputs.fname.value, isValid: fnameValid },
 					lname: { value: currentInputs.lname.value, isValid: lnameValid },
+					product: {
+						value: currentInputs.product.value,
+						isValid: productValid
+					},
 					email: { value: currentInputs.email.value, isValid: emailValid },
 					company: {
 						value: currentInputs.company.value,
@@ -94,27 +115,30 @@ const ContactForm = () => {
 			return
 		}
 
-		
-
-		
-		var subject = "Customer Information Request";
-		var email = "info@hopper-eng.com";
- // encode the data for the mailto link
-		const body =`<div>
+		var subject = 'Customer Information Request'
+		var email = 'qa.biz2030@gmail.com'
+		// var email = 'rifkhanmuhammed17@gmail.com'
+		// encode the data for the mailto link
+		const body = `
 			Hi Im ${data.fname} ${data?.lname} %0D%0A
 			phone : ${data?.phone} %0D%0A
 			company : ${data?.company} %0D%0A  
 			email : ${data?.email} %0D%0A  
+			product : ${data?.product} %0D%0A  
 			
 			message:${data?.message}`
-		
-	
+
 		// Construct the mailto link with subject and body
-		var mailtoLink = "mailto:" + email + "?subject=" + encodeURIComponent(subject) + "&body=" + body;
-	
+		var mailtoLink =
+			'mailto:' +
+			email +
+			'?subject=' +
+			encodeURIComponent(subject) +
+			'&body=' +
+			body
+
 		// Open the default email client with the mailto link
-		window.location.href = mailtoLink;
-	
+		window.location.href = mailtoLink
 
 		setInputs(initialInputsState)
 	}
@@ -141,7 +165,7 @@ const ContactForm = () => {
 				</div>
 			)}
 
-			<form class="form" id='form' onSubmit={submitHandler}>
+			<form class="form" id="form" onSubmit={submitHandler}>
 				{/* forms row start */}
 
 				<div class="form-row row">
@@ -149,7 +173,7 @@ const ContactForm = () => {
 						<div class="form-group">
 							<input
 								type="email"
-								name='email'
+								name="email"
 								class="form-control"
 								id="inputFirstName"
 								placeholder="Enter email"
@@ -164,7 +188,7 @@ const ContactForm = () => {
 						<input
 							type="First Name"
 							class="col-sm-6 col-md-6 form-control"
-							name='fname'
+							name="fname"
 							placeholder="First Name"
 							value={inputs.fname.value}
 							onChange={e => inputTextChangeHandler('fname', e.target.value)}
@@ -173,8 +197,7 @@ const ContactForm = () => {
 					<div class="col-md-6 col-sm-6  my-3">
 						<input
 							type="Last Name"
-							name='lname'
-
+							name="lname"
 							class="col-sm-6 col-md-6 form-control"
 							placeholder="Last Name"
 							value={inputs.lname.value}
@@ -187,8 +210,7 @@ const ContactForm = () => {
 					<div class="col-md-6 col-sm-6  my-3">
 						<input
 							type="Company"
-							name='company'
-
+							name="company"
 							class="col-sm-6 col-md-6 form-control"
 							placeholder="Company"
 							value={inputs.company.value}
@@ -200,8 +222,7 @@ const ContactForm = () => {
 							type="Last Name"
 							class="col-sm-6 col-md-6 form-control"
 							placeholder="Phone"
-							name='phone'
-
+							name="phone"
 							value={inputs.phone.value}
 							onChange={e => inputTextChangeHandler('phone', e.target.value)}
 						/>
@@ -215,8 +236,7 @@ const ContactForm = () => {
 								type="message"
 								class="form-control"
 								id="inputFirstName"
-							name='message'
-
+								name="message"
 								placeholder="Enter Message"
 								value={inputs.message.value}
 								rows={5}
@@ -226,14 +246,27 @@ const ContactForm = () => {
 							/>
 						</div>
 					</div>
-
-
+					<div class="col-md-6 col-sm-6  my-3">
+						<select
+							className="col-sm-6 col-md-6 form-control"
+							name="product"
+							value={inputs.product.value}
+							onChange={e => inputTextChangeHandler('product', e.target.value)}>
+							<option value="" disabled>
+								Select Product
+							</option>
+							{products.map(product => (
+								<option value={product} key={product}>
+									{product}
+								</option>
+							))}
+						</select>
+					</div>
+				</div>
+				<div class="form-row row">
 					<div class="col-md-1 col-sm-6 my-3">
 						<div class="form-group">
-							<button
-								type="submit"
-								class="btn btn-primary"
-								>
+							<button type="submit" class="btn btn-primary">
 								Submit
 							</button>
 						</div>

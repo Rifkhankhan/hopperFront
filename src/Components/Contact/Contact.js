@@ -1,9 +1,21 @@
 import React from 'react'
 import image2 from './../../images/ContactUs.png'
 import styles from './Contact.module.css'
-import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons'
+import { faMailbox, faMessage } from '@fortawesome/free-regular-svg-icons'
+import {
+	faFacebook,
+	faInstagram,
+	faLetterboxd,
+	faMailchimp
+} from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ContactForm from '../Form/ContactForm'
+import {
+	faHome,
+	faMailBulk,
+	faMailForward,
+	faPhone
+} from '@fortawesome/free-solid-svg-icons'
 const Contact = ({ contactRef }) => {
 	return (
 		<section
@@ -31,17 +43,33 @@ const Contact = ({ contactRef }) => {
 											<h4>LOOKING AN ADEQUATE SOLUTION FOR YOUR COMPANY? </h4>
 											<p />
 											<ul class="list-ico">
-												<li>
+												<li className="my-2">
+													<FontAwesomeIcon
+														icon={faHome}
+														fontSize="1.8em"
+														color="white"
+													/>
 													<span class="bi bi-geo-alt" /> P.O Box 30264, State of
 													Qatar – Doha
 												</li>
-												<li>
+												<li className="my-2">
+													<FontAwesomeIcon
+														icon={faPhone}
+														fontSize="1.8em"
+														color="white"
+													/>
 													<span class="bi bi-phone" /> +974 41402428
 												</li>
-												<li>
+												<li className="my-2">
+													<FontAwesomeIcon
+														icon={faPhone}
+														fontSize="1.8em"
+														color="white"
+													/>
 													<span class="bi bi-phone" /> +974 77249961
 												</li>
-												<li>
+												<li className="my-2">
+													<FontAwesomeIcon icon={faMessage} fontSize="1.8em" />
 													<span class="bi bi-envelope" /> info@hopper-eng.com{' '}
 												</li>
 												<li className="my-2">

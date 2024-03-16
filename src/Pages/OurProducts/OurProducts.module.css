@@ -97,7 +97,6 @@
 	border-radius: 12px;
 	border: 1px solid rgba(209, 213, 219, 0.3);
 	transition: all 0.3s ease-in-out;
-	border: 5px solid red; /* Initial border color */
 	animation: blink 1s infinite; /* Blink animation */
 }
 .box:hover {
