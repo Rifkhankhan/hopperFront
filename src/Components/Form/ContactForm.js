@@ -121,30 +121,38 @@ const ContactForm = () => {
 			return
 		}
 
-		var subject = 'Customer Information Request'
-		var email = 'info@hopper-eng.com'
-		// var email = 'rifkhanmuhammed17@gmail.com'
-		// encode the data for the mailto link
+		// Set the subject line for the email
+		const subject = 'Customer Information Request'
+
+		// Set the recipient email address
+		const recipientEmail = 'rifkhanmuhammed17@gmail.com'
+
+		// Construct the email body
 		const body = `
-			Hi Im ${data.fname} ${data?.lname} %0D%0A
-			phone : ${data?.phone} %0D%0A
-			company : ${data?.company} %0D%0A  
-			email : ${data?.email} %0D%0A  
-			product : ${data?.product} %0D%0A  
+			Hi, 
+
+			I am ${data.fname} ${data?.lname}. 
+			Here is my contact information:
+			Phone: ${data?.phone}
+			Company: ${data?.company}
+			Email: ${data?.email}
+			Product of Interest: ${data?.product}
 			
-			message:${data?.message}`
+			Message:
+			${data?.message}
+		`
+
+		// Encode the email body
+		const encodedBody = encodeURIComponent(body)
 
 		// Construct the mailto link with subject and body
-		var mailtoLink =
-			'mailto:' +
-			email +
-			'?subject=' +
-			encodeURIComponent(subject) +
-			'&body=' +
-			body
+		const mailtoLink = `mailto:${recipientEmail}?subject=${encodeURIComponent(
+			subject
+		)}&body=${encodedBody}`
 
 		// Open the default email client with the mailto link
 		window.location.href = mailtoLink
+
 		setSelectedOther(false)
 		setInputs(initialInputsState)
 	}
