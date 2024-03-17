@@ -125,7 +125,7 @@ const ContactForm = () => {
 		const subject = 'Customer Information Request'
 
 		// Set the recipient email address
-		const recipientEmail = 'rifkhanmuhammed17@gmail.com'
+		const recipientEmail = 'info@hopper-eng.com'
 
 		// Construct the email body
 		const body = `
