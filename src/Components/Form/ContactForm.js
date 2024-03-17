@@ -22,18 +22,18 @@ const ContactForm = () => {
 	}
 
 	const products = [
-		'Mobile hotel cube',
-		'Mobile policeor military cube',
-		'medical cube',
-		'office cube',
-		'magnetic generator',
-		'soler power',
-		'zero water generator',
-		'zero farm',
-		'mobile nuclear shelter',
-		'earthquake resistant shelter',
-		'bomb(blast) shelter',
-		'flood shelter',
+		'Mobile Hotel Cube',
+		'Mobile Policeor Military Cube',
+		'Medical Cube',
+		'Office Cube',
+		'Magnetic Generator',
+		'Soler Power',
+		'Zero Water Generator',
+		'Zero Farm',
+		'Mobile Nuclear Shelter',
+		'Earthquake Resistant Shelter',
+		'Bomb(Blast) Shelter',
+		'Flood Shelter',
 		'Other'
 	]
 
@@ -274,7 +274,7 @@ const ContactForm = () => {
 								</option>
 								{products.map(product => (
 									<option value={product} key={product}>
-										{product}
+										{produc}
 									</option>
 								))}
 							</select>
