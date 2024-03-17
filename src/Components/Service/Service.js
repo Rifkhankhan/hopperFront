@@ -124,49 +124,7 @@ const Service = ({ servicesRef }) => {
 							</div>
 						</div>
 					</div>
-					<div className="col-md-4 mt-3">
-						<div
-							className="service-box"
-							style={{
-								background: ' rgba( 250, 242, 242, 0.15 )',
-								boxShadow: ' 0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',
-								backdropFilter: ' blur( 3px )',
-								WebkitBackdropFilter: 'blur( 3px )',
-								borderRadius: '10px',
-								border: '1px solid rgba( 255, 255, 255, 0.18 )'
-							}}>
-							<div className="service-ico">
-								<span className="ico-circle">
-									<i class="bi bi-binoculars"></i>
-								</span>
-							</div>
-							<div className="service-content">
-								<h2 className="s-title" style={{ fontSize: '3vh' }}>
-									ZERO CONNECT PRODUCTS
-								</h2>
-								<p className="s-description text-center">
-									<br />
-									01-Mobile Hospital Cube
-									<br />
-									<br />
-									02-Mobile Studio Cube
-									<br />
-									<br />
-									03-Mobile Police &amp; Military Cube
-									<br />
-									<br />
-									04-Mobile Hotel Cube
-									<br />
-									<br />
-									05-Mobile Medical Cube
-									<br />
-									<br />
-									06-Mobile Office Cube
-									<br />
-								</p>
-							</div>
-						</div>
-					</div>
+
 					<div className="col-md-4">
 						<div className="service-box">
 							<div className="service-ico">

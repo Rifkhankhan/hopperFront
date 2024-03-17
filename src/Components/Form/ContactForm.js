@@ -274,7 +274,7 @@ const ContactForm = () => {
 								</option>
 								{products.map(product => (
 									<option value={product} key={product}>
-										{produc}
+										{product}
 									</option>
 								))}
 							</select>
