@@ -9,6 +9,7 @@ const ContactForm = () => {
 	const [formSubmit, setFormSubmit] = useState(false)
 	const dispatch = useDispatch()
 	const [error, setHasError] = useState(false)
+	const [selectedOther, setSelectedOther] = useState(false)
 	// Initial state for inputs
 	const initialInputsState = {
 		fname: { value: '', isValid: true },
@@ -32,7 +33,8 @@ const ContactForm = () => {
 		'mobile nuclear shelter',
 		'earthquake resistant shelter',
 		'bomb(blast) shelter',
-		'flood shelter'
+		'flood shelter',
+		'Other'
 	]
 
 	// State for inputs
@@ -53,6 +55,10 @@ const ContactForm = () => {
 	}, [inputs])
 
 	const inputTextChangeHandler = (inputType, enteredValue) => {
+		if (inputType === 'product' && enteredValue === 'Other') {
+			setSelectedOther(true)
+			enteredValue = ''
+		}
 		setInputs(currentInputValue => {
 			return {
 				...currentInputValue,
@@ -116,7 +122,7 @@ const ContactForm = () => {
 		}
 
 		var subject = 'Customer Information Request'
-		var email = 'qa.biz2030@gmail.com'
+		var email = 'info@hopper-eng.com'
 		// var email = 'rifkhanmuhammed17@gmail.com'
 		// encode the data for the mailto link
 		const body = `
@@ -139,7 +145,7 @@ const ContactForm = () => {
 
 		// Open the default email client with the mailto link
 		window.location.href = mailtoLink
-
+		setSelectedOther(false)
 		setInputs(initialInputsState)
 	}
 	return (
@@ -246,22 +252,40 @@ const ContactForm = () => {
 							/>
 						</div>
 					</div>
-					<div class="col-md-6 col-sm-6  my-3">
-						<select
-							className="col-sm-6 col-md-6 form-control"
-							name="product"
-							value={inputs.product.value}
-							onChange={e => inputTextChangeHandler('product', e.target.value)}>
-							<option value="" disabled>
-								Select Product
-							</option>
-							{products.map(product => (
-								<option value={product} key={product}>
-									{product}
+					{!selectedOther && (
+						<div class="col-md-6 col-sm-6  my-3">
+							<select
+								className="col-sm-6 col-md-6 form-control"
+								name="product"
+								value={inputs.product.value}
+								onChange={e =>
+									inputTextChangeHandler('product', e.target.value)
+								}>
+								<option value="" disabled>
+									Select Product
 								</option>
-							))}
-						</select>
-					</div>
+								{products.map(product => (
+									<option value={product} key={product}>
+										{product}
+									</option>
+								))}
+							</select>
+						</div>
+					)}
+					{selectedOther && (
+						<div class="col-md-6 col-sm-6  my-3">
+							<input
+								type="text"
+								class="col-sm-6 col-md-6 form-control"
+								placeholder="Type A Product"
+								name="product"
+								value={inputs.product.value}
+								onChange={e =>
+									inputTextChangeHandler('product', e.target.value)
+								}
+							/>
+						</div>
+					)}
 				</div>
 				<div class="form-row row">
 					<div class="col-md-1 col-sm-6 my-3">
