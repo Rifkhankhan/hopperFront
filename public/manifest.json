@@ -1,6 +1,6 @@
 {
   "short_name": "HopPer",
-  "name": "Create React App Sample",
+  "name": "HopPer",
   "icons": [
     {
       "src": "SCIT_LOGO.png",
@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "SCIT_LOGO.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "SCIT_LOGO.png",
       "type": "image/png",
       "sizes": "512x512"
     }
